@@ -4,28 +4,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AMS.Models;
-using AMS.Services.Customers;
+using AMS.Mobile.Models;
 
-namespace AMS.Controllers
+namespace AMS.Mobile.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IAccountService _accountService;
-        public HomeController(IAccountService accountService)
-        {
-            _accountService = accountService;
-        }
-        [Cache(name:"System")]
         public IActionResult Index()
         {
-            var account = _accountService.GetRoleList().FirstOrDefault();
-            if (account != null)
-            {
-                ViewBag.UserName = account.Name;
-            }
-            else
-                ViewBag.UserName = "nulllllllllll";
             return View();
         }
 
